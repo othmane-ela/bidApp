@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: Renner-Bold
+font link: http://indestructibletype.com/BuyRenner.html
+font author: indestructible type*
+font author site: http://indestructibletype.com/Home.html
+
+
+icon designer: Mourad Mokrane
+icon designer link: /molumen
+        
+{"bg":"transparent","icon-gradient-0":"#01695A","icon-gradient-1":"#2CC26F","font":"#000000","slogan":"#141414"}
+      
