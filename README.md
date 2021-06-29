@@ -72,12 +72,48 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Architecture
 
+USER-CONTEXT { user,setUser }
 
-App     
-    - user + { UserContext }
+c:App     
 
-Layout 
-    
+    s:user  
+
+c:Layout 
+
     c:NavBar 
+        USER-CONTEXT(user) ?  + c:ConnectItems :   (c:loginForm  &&  c:SignUpForm) =>  ApiFetch() && USER-CONTEXT(setUser)
+    
     c:SideBare
-    c:{Pages : Intro,Home,Offers,Sellers,Profile ...}
+        USER-CONTEXT(user) ? c:ConnectPanels + c:NotConnectPanles : c:NotConnectPanels
+
+    c:Routes
+        SWITCH ROUTER :
+                c:Home
+                    h:useOffers
+                c:Offers
+                     h:useOffers
+                c:OfferDetails                 
+                    -> Id
+                    s:offer
+                    h : useBids
+                    c:comment
+                        <- onSumbite(offer)
+                    c:rates
+                        <- onSumbite(offer)
+
+                    USER-CONTEXT(user) ? 
+                        c:BidDisplay && c:BidSystem  <- onSubmite(offer)
+                            :
+                        c:BidDisplay 
+
+
+                c:UserCreateOffer
+
+                c:UserEditeOffer
+
+                c:Subscriptions 
+
+                c:Deposite
+                
+                c:Withdraw
+                
