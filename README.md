@@ -72,3 +72,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Architecture
 
+
+App     
+    - user + { UserContext }
+
+Layout 
+    
+    c:NavBar 
+    c:SideBare
+    c:{Pages : Intro,Home,Offers,Sellers,Profile ...}
