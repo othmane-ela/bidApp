@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { apiFtech } from './../../utils/api'
 import { UserContext } from '../../hooks/Contexts'
 import { VStack } from '@chakra-ui/layout'
@@ -6,7 +7,7 @@ import {
     Flex,
     Box, IconButton,
     useColorMode, Spacer, Wrap,
-    WrapItem, Link,
+    WrapItem,
     Input, useColorModeValue,
     Stack,
     useMediaQuery,
@@ -41,16 +42,20 @@ export default function Navbar() {
         <VStack width="100%">
             <Flex w="100%" p={2} bg={customeBackground} shadow="sm" alignItems="center" position="fixed" zIndex="1" >
                 <Box>
-                    <Heading ml="4" size="md" fontWeight="bold" fontFamily={'Quattrocento'}>Auctionarium</Heading>
+                    <Heading ml="4" size="md" fontWeight="900" fontFamily={'Quattrocento'}><Link to="/">Auctionaruim</Link></Heading>
                 </Box>
                 <Box>
                     {isLargerThan1280 ?
                         <Wrap ml={8} direction={["column", "row"]} spacing="24px">
                             <WrapItem>
-                                <Link fontWeight="bold" textDecoration="none" _hover={{ color: 'green.300' }} >Market</Link>
+                                <Link to="/market" activeClassName="active">
+                                    Market
+                                </Link>
                             </WrapItem>
                             <WrapItem>
-                                <Link fontWeight="bold" _hover={{ color: 'green.300' }}>Subscriptions</Link>
+                                <Link to="/subscriptions">
+                                    Subscriptions
+                                </Link>
                             </WrapItem>
                         </Wrap>
                         :
@@ -60,7 +65,7 @@ export default function Navbar() {
                             </MenuButton>
                             <Portal>
                                 <MenuList bg={customeBackground}>
-                                    <MenuItem><Link fontWeight="bold" textDecoration="none" _hover={{ color: 'green.300' }} >Market</Link></MenuItem>
+                                    <MenuItem><Link fontWeight="bold" textDecoration="none" _hover={{ color: 'teal.00' }} >Market</Link></MenuItem>
                                     <MenuItem><Link _hover={{ color: 'green.300' }}  >Subscriptions</Link></MenuItem>
                                 </MenuList>
                             </Portal>

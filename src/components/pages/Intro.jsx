@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { UserContext } from '../../hooks/Contexts';
+import React from 'react'
 import {
     Button,
     Flex,
@@ -7,7 +6,6 @@ import {
     Image,
     Stack,
     Text,
-
     Box, Icon, createIcon,
     useColorModeValue
 } from '@chakra-ui/react';
@@ -15,8 +13,6 @@ import {
 
 
 export default function Intro() {
-
-    const { user } = useContext(UserContext);
 
     return (
         <Box ml="14%" >
@@ -38,7 +34,6 @@ export default function Intro() {
                                 </Text>
                             </Heading>
                             <Text color={'gray.500'}>
-                                {JSON.stringify(user)}
                                 Monetize your content by charging your most loyal readers and reward
                                 them loyalty points. Give back to your loyal readers by granting
                                 them access to your pre-releases and sneak-peaks.

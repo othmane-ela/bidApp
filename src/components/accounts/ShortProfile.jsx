@@ -1,3 +1,5 @@
+import React, { useContext } from 'react'
+import { UserContext } from '../../hooks/Contexts';
 import {
     Heading,
     Avatar,
@@ -13,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 
 export default function ShortProfile() {
+    const { user } = useContext(UserContext);
     return (
         <VStack m={4} spacing={1} align="stretch" textAlign="left" borderWidth="1px" rounded={8}>
             <Center py={6}>
@@ -43,11 +46,21 @@ export default function ShortProfile() {
                             right: 3,
                         }}
                     />
+                    <Stack align={'center'} justify={'center'} direction={'row'} mt={1} mb={3}>
+                        <Badge
+                            px={2}
+                            py={1}
+                            colorScheme="green.300"
+                            bg={useColorModeValue('gray.100', 'green.300')}
+                            fontWeight={'400'}>
+                            {user.type}
+                        </Badge>
+                    </Stack>
                     <Heading fontSize={'2xl'} fontFamily={'body'}>
-                        Lindsey James
+                        {user.balance}$
                     </Heading>
                     <Text fontWeight={600} color={'gray.500'} mb={4}>
-                        @lindsey_jam3s
+                        @{user.userName}
                     </Text>
                     <Text
                         textAlign={'center'}
@@ -57,25 +70,9 @@ export default function ShortProfile() {
                         <Link href={'#'} color={'blue.400'}>
                             #tag
                         </Link>{' '}
-                        me in your posts
+                        {user.type}
                     </Text>
 
-                    <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
-                        <Badge
-                            px={2}
-                            py={1}
-                            bg={useColorModeValue('gray.50', 'gray.800')}
-                            fontWeight={'400'}>
-                            #art
-                        </Badge>
-                        <Badge
-                            px={2}
-                            py={1}
-                            bg={useColorModeValue('gray.50', 'gray.800')}
-                            fontWeight={'400'}>
-                            #photography
-                        </Badge>
-                    </Stack>
 
                     <Stack mt={8} direction={'column'} spacing={4}>
                         <Button p={1} bg="green.300" colorScheme={'green'} variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>

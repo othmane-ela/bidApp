@@ -26,9 +26,9 @@ function App() {
   */
   useEffect(() => {
     apiFtech("/buyer/")
-      .then(setUser)
+      .then((data) => setUser(data))
       .catch(() => setUser(null))
-  }, [setUser])
+  }, [])
 
 
   return (
