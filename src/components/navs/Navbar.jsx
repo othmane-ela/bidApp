@@ -1,3 +1,6 @@
+import React, { useContext } from 'react'
+import { apiFtech } from './../../utils/api'
+import { UserContext } from '../../hooks/Contexts'
 import { VStack } from '@chakra-ui/layout'
 import {
     Flex,
@@ -15,21 +18,30 @@ import { SunIcon, MoonIcon, DragHandleIcon, Search2Icon, BellIcon, ChatIcon, Cal
 import LoginForm from './LoginForm';
 import SingupForm from './SignUpForm'
 
+
+
+
 export default function Navbar() {
 
+    /**
+     * STYLE
+     */
     const { colorMode, toggleColorMode } = useColorMode();
     const customeBackground = useColorModeValue("gray.50", "#1F1F1F");
     const SerachBackground = useColorModeValue("white", "#0F0F0F");
     const [isLargerThan1280] = useMediaQuery("(min-width: 1280px)")
     const isDark = colorMode === "dark";
-    const user = true;
+
+    /**
+    * DATA
+    */
+    const { user, setUser } = useContext(UserContext);
 
     return (
-
         <VStack width="100%">
             <Flex w="100%" p={2} bg={customeBackground} shadow="sm" alignItems="center" position="fixed" zIndex="1" >
                 <Box>
-                    <Heading ml="4" size="md" fontWeight="bold" fontFamily={'Quattrocento'}> Auctionarium </Heading>
+                    <Heading ml="4" size="md" fontWeight="bold" fontFamily={'Quattrocento'}>Auctionarium</Heading>
                 </Box>
                 <Box>
                     {isLargerThan1280 ?
@@ -74,7 +86,7 @@ export default function Navbar() {
                 <Spacer></Spacer>
 
 
-                {user ? <>
+                {user != null ? <>
                     {isLargerThan1280 &&
                         <>
                             <Box>
@@ -89,7 +101,7 @@ export default function Navbar() {
                         </>
                     }
                     <Box>
-                        <AccountSection />
+                        <AccountSection setUser={setUser} />
                     </Box>
 
                 </>
@@ -110,8 +122,14 @@ export default function Navbar() {
 }
 
 
-function AccountSection() {
+function AccountSection({ setUser }) {
     const customeBackground = useColorModeValue("white", "#1F1F1F");
+    const handleClick = function (e) {
+        e.preventDefault();
+        apiFtech("/logoff", { method: 'POST' })
+            .then(() => setUser(null))
+            .catch((message) => console.log(message))
+    }
     return <Menu >
         <MenuButton ml={8}>
             <Avatar size="sm" name="Dan Abrahmov" src="https://bit.ly/sage-adebayo" />
@@ -121,7 +139,9 @@ function AccountSection() {
                 <MenuItem>Profile</MenuItem>
                 <MenuItem>Payment</MenuItem>
                 <MenuItem>Settings</MenuItem>
-                <MenuItem>Disconnect</MenuItem>
+                <form>
+                    <MenuItem onClick={handleClick}>Disconnect</MenuItem>
+                </form>
             </MenuList>
         </Portal>
     </Menu>

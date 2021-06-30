@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../hooks/Contexts';
 import { useColorModeValue, Box, VStack, Link, Heading, useMediaQuery, IconButton } from '@chakra-ui/react'
 import { CopyIcon, BellIcon, ChatIcon, CalendarIcon } from "@chakra-ui/icons"
 import ShortProfile from '../accounts/ShortProfile'
@@ -20,15 +21,21 @@ export default AsideNav;
 
 function DefaultPanel() {
 
+    /**
+     * STYLE
+     */
     const customeBackground = useColorModeValue("gray.50", "#1F1F1F");
     const [isLargerThan1280] = useMediaQuery("(min-width: 1200px)")
-    const user = true;
+    /**
+     * DATA
+     */
+    const { user } = useContext(UserContext);
 
     return (
         <>
             {isLargerThan1280 ?
                 <Box>
-                    {user &&
+                    {user != null &&
                         < ShortProfile />
                     }
                     <VStack m={3} p={3} spacing={1} align="stretch" textAlign="left" borderWidth="1px" rounded={8}>

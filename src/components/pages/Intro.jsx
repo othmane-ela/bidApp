@@ -1,3 +1,5 @@
+import React, { useContext } from 'react'
+import { UserContext } from '../../hooks/Contexts';
 import {
     Button,
     Flex,
@@ -13,6 +15,9 @@ import {
 
 
 export default function Intro() {
+
+    const { user } = useContext(UserContext);
+
     return (
         <Box ml="14%" >
             <Box>
@@ -33,6 +38,7 @@ export default function Intro() {
                                 </Text>
                             </Heading>
                             <Text color={'gray.500'}>
+                                {JSON.stringify(user)}
                                 Monetize your content by charging your most loyal readers and reward
                                 them loyalty points. Give back to your loyal readers by granting
                                 them access to your pre-releases and sneak-peaks.
@@ -49,7 +55,7 @@ export default function Intro() {
                                     w={'full'}
                                     bg={'green.400'}
                                     colorScheme={'green'}
-                                    rounded={'xl'}
+                                    rounded={4}
                                     boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
                                     _hover={{
                                         bg: 'green.500',

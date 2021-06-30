@@ -1,3 +1,65 @@
+### Architecture
+
+    USER-CONTEXT    
+
+    c:App     
+
+        s:user  
+        s:offers
+
+    c:Layout 
+
+        c:NavBar 
+            USER-CONTEXT ?  c:ConnectItems :   (c:loginForm ->  USERCONTEXT:setUser(token) ||  c:SignUpForm USERCONTEXT:setUser(token) ) 
+        
+        c:SideBare
+            USER-CONTEXT ? c:ConnectPanels + c:NotConnectPanles : c:NotConnectPanels
+
+        c:Routes
+            SWITCH ROUTER :
+                    c:Home
+                    -> offers
+
+                    c:Offers
+                    -> offers
+
+                    c:OfferDetails                 
+                        -> id
+                        -> offer
+
+                        c:Comment
+                            -> comments
+                            <- onSumbite(offer)
+                            <- onUpdate(offer)
+                    
+                        c:Bids   
+                            -> bids  
+                            <- onSumbite(offer) // Submit bid update Offer
+
+                    c:UserOffers
+                        s:offers
+                            c:CreateOffers
+                                    <- onCreate(offer)
+                            c:CreateProduct
+                                    <- onCreate(product - offer)  // Create products update Offer
+                                c:DetailOffers
+                                    <- onUpdate(offer)
+                                    <- onDelete(offer) 
+                                c:DetailProducts
+                                    <- onUpdate(product - offer)  // Update products update Offer
+                                    <- onDelete(product - offer) // Delete products update Offer
+                    c: Shipping Details 
+                        
+                    c:Pack
+
+                    c:Subscriptions 
+
+                    c:Deposit
+                    
+                    c:Withdraw
+                
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -69,51 +131,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
-### Architecture
-
-USER-CONTEXT { user,setUser }
-
-c:App     
-
-    s:user  
-
-c:Layout 
-
-    c:NavBar 
-        USER-CONTEXT(user) ?  + c:ConnectItems :   (c:loginForm  &&  c:SignUpForm) =>  ApiFetch() && USER-CONTEXT(setUser)
-    
-    c:SideBare
-        USER-CONTEXT(user) ? c:ConnectPanels + c:NotConnectPanles : c:NotConnectPanels
-
-    c:Routes
-        SWITCH ROUTER :
-                c:Home
-                    h:useOffers
-                c:Offers
-                     h:useOffers
-                c:OfferDetails                 
-                    -> Id
-                    s:offer
-                    h : useBids
-                    c:comment
-                        <- onSumbite(offer)
-                    c:rates
-                        <- onSumbite(offer)
-
-                    USER-CONTEXT(user) ? 
-                        c:BidDisplay && c:BidSystem  <- onSubmite(offer)
-                            :
-                        c:BidDisplay 
-
-
-                c:UserCreateOffer
-
-                c:UserEditeOffer
-
-                c:Subscriptions 
-
-                c:Deposite
-                
-                c:Withdraw
-                
