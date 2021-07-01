@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { UserContext } from '../../hooks/Contexts';
 import { Alert, AlertIcon, useColorModeValue, Button, FormControl, FormLabel, Input, Modal, ModalHeader, ModalBody, ModalOverlay, ModalContent, ModalFooter, ModalCloseButton, useDisclosure } from '@chakra-ui/react'
-import { useState } from 'react';
 
 
 export default function LoginForm() {
@@ -13,13 +12,13 @@ export default function LoginForm() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const initialRef = React.useRef()
     const finalRef = React.useRef()
+
     /**
      * DATA
      */
-    const { setUser } = useContext(UserContext);
+    const { setAuthorization } = useContext(UserContext);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-
 
     /**
      * 
@@ -37,19 +36,17 @@ export default function LoginForm() {
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
-
+                Accept: 'application/json',
             }
         })
         const responseData = await response.json();
         if (response.ok) {
-            setUser(responseData.token)
+            setAuthorization(responseData.token)
         }
         else {
             setLoading(false)
             setError(responseData.message)
         }
-
-
     }
 
 

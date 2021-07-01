@@ -48,7 +48,7 @@ export default function Navbar() {
                     {isLargerThan1280 ?
                         <Wrap ml={8} direction={["column", "row"]} spacing="24px">
                             <WrapItem>
-                                <Link to="/market" activeClassName="active">
+                                <Link to="/market" >
                                     Market
                                 </Link>
                             </WrapItem>
@@ -65,8 +65,12 @@ export default function Navbar() {
                             </MenuButton>
                             <Portal>
                                 <MenuList bg={customeBackground}>
-                                    <MenuItem><Link fontWeight="bold" textDecoration="none" _hover={{ color: 'teal.00' }} >Market</Link></MenuItem>
+                                    {/* 
+                                     <MenuItem><Link fontWeight="bold" textDecoration="none" _hover={{ color: 'teal.00' }} >Market</Link></MenuItem>
                                     <MenuItem><Link _hover={{ color: 'green.300' }}  >Subscriptions</Link></MenuItem>
+                                
+                                    */}
+
                                 </MenuList>
                             </Portal>
                         </Menu>

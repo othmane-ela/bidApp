@@ -9,7 +9,9 @@ function App() {
   /**
    * DATA
    */
+  const [authorization, setAuthorization] = useState(false);
   const [user, setUser] = useState(null);
+
   /**
    * INIT USER CONTEXT
    */
@@ -17,22 +19,29 @@ function App() {
     return {
       user,
       setUser,
+      authorization,
+      setAuthorization
     }
-  }, [user, setUser])
+  }, [user, setUser, authorization, setAuthorization])
 
   /**
    * FETCH USER
-   * 
   */
   useEffect(() => {
     apiFtech("/buyer/")
-      .then((data) => setUser(data))
+      .then(data => mountUser(data))
       .catch(() => setUser(null))
-  }, [])
+
+    async function mountUser(data) {
+      setUser(await data);
+    }
+  }, [authorization])
+
 
 
   return (
     <UserContext.Provider value={UserContextValue}>
+      {console.log('render')}
       <Layout />
     </UserContext.Provider>
   );

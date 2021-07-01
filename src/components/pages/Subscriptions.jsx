@@ -31,9 +31,9 @@ function PriceWrapper({ children }) {
 
 export default function Subscriptions() {
     return (
-        <Container maxW="container.xl">
-            <Heading mt={20} fontSize="5xl" fontWeight="900" fontFamily={'Quattrocento'}>Join Auctionaruim !</Heading>
-            <Text mb={5} color="gray.500">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae itaque iure inventore iusto rerum consequuntur aperiam minima consectetur.</Text>
+        <Container maxW="container.xl" ml="14%">
+            <Heading mt={20} fontSize="5xl" fontWeight="900" fontFamily={'Quattrocento'} textAlign="center">Join Auctionaruim !</Heading>
+            <Text mb={5} color="gray.500" textAlign="center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae itaque iure inventore iusto rerum consequuntur aperiam minima consectetur.</Text>
             <Box w="100%" mt={20}>
                 <VStack spacing={2} textAlign="center">
                     <Heading as="h1" fontSize="4xl" fontFamily={'Quattrocento'}>

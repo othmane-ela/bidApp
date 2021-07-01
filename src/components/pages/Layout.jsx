@@ -13,26 +13,27 @@ import Market from './Market'
 
 import { Flex } from '@chakra-ui/react';
 
-function Layout(props) {
+function Layout() {
     return (
         <Router>
             <Flex >
                 <Navbar />
             </Flex>
-            <Switch>
-                <Route exact path="/subscriptions">
-                    <Subscriptions />
-                </Route>
-                <Flex>
-                    <AsideNav />
+            <Flex>
+                <AsideNav />
+                <Switch>
+                    <Route exact path="/subscriptions">
+                        <Subscriptions />
+                    </Route>
                     <Route exact path="/">
                         <Intro />
                     </Route>
                     <Route exact path="/market">
                         <Market />
                     </Route>
-                </Flex>
-            </Switch>
+                </Switch>
+
+            </Flex>
         </Router>
     );
 }

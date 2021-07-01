@@ -9,18 +9,6 @@ import { SiMarketo } from 'react-icons/si'
 import { RiShieldUserLine } from 'react-icons/ri'
 
 
-function AsideNav() {
-
-    const asideBackground = useColorModeValue("gray.50", "#151515");
-
-    return (
-        <Box width={"14%"} h="100vh" bg={asideBackground} shadow="md" position="fixed" zIndex="0" mt="56px">
-            < DefaultPanel />
-        </Box >
-    );
-}
-
-export default AsideNav;
 
 
 function DefaultPanel() {
@@ -66,10 +54,10 @@ function DefaultPanel() {
                     </VStack>
                     <Spacer></Spacer>
                     <Box bgGradient="linear(to-l,  teal.500, green.500)" m={3} p={3} rounded={8} >
-                        <Heading as="h6" size="md" p={3} color="black" >
+                        <Heading as="h6" size="md" p={3}>
                             Subscribe Now !
-                            <Heading size="xl">25$ per Mounth</Heading>
                         </Heading>
+                        <Heading size="xl">25$ per Mounth</Heading>
                     </Box>
                 </Box>
 
@@ -92,3 +80,19 @@ function DefaultPanel() {
 
     );
 }
+
+function AsideNav() {
+
+    const asideBackground = useColorModeValue("gray.50", "#151515");
+
+    return (
+        <Box width={"14%"} height="auto" bg={asideBackground} shadow="md" position="fixed" zIndex="0" mt="56px">
+            < DefaultPanel />
+        </Box >
+    );
+}
+
+export default AsideNav;
+
+
+
