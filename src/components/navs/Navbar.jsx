@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { apiFtech } from './../../utils/api'
-import { UserContext } from '../../hooks/Contexts'
+import { apiFetch } from './../../utils/api'
+import { UserContext } from '../../hooks/contexts'
 import { VStack } from '@chakra-ui/layout'
 import {
     Flex,
@@ -36,12 +36,13 @@ export default function Navbar() {
     /**
     * DATA
     */
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     return (
         <VStack width="100%">
             <Flex w="100%" p={2} bg={customeBackground} shadow="sm" alignItems="center" position="fixed" zIndex="1" >
                 <Box>
+
                     <Heading ml="4" size="md" fontWeight="900" fontFamily={'Quattrocento'}><Link to="/">Auctionaruim</Link></Heading>
                 </Box>
                 <Box>
@@ -95,7 +96,7 @@ export default function Navbar() {
                 <Spacer></Spacer>
 
 
-                {user != null ? <>
+                {user != null && user !== false ? <>
                     {isLargerThan1280 &&
                         <>
                             <Box>
@@ -110,7 +111,7 @@ export default function Navbar() {
                         </>
                     }
                     <Box>
-                        <AccountSection setUser={setUser} />
+                        <AccountSection />
                     </Box>
 
                 </>
@@ -131,12 +132,14 @@ export default function Navbar() {
 }
 
 
-function AccountSection({ setUser }) {
+function AccountSection() {
     const customeBackground = useColorModeValue("white", "#1F1F1F");
+    const { setAuthorization } = useContext(UserContext);
+
     const handleClick = function (e) {
         e.preventDefault();
-        apiFtech("/logoff", { method: 'POST' })
-            .then(() => setUser(null))
+        apiFetch("/logoff", { method: 'POST' })
+            .then(setAuthorization)
             .catch((message) => console.log(message))
     }
     return <Menu >

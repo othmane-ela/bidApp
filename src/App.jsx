@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react'
-import { UserContext } from './hooks/Contexts';
-import Layout from './components/pages/Layout';
-import { apiFtech } from './utils/api';
+import { UserContext } from './hooks/contexts';
+import Site from './components/pages/Site';
+import { apiFetch } from './utils/api';
 
 
 function App() {
@@ -24,25 +24,26 @@ function App() {
     }
   }, [user, setUser, authorization, setAuthorization])
 
+
   /**
    * FETCH USER
   */
-  useEffect(() => {
-    apiFtech("/buyer/")
-      .then(data => mountUser(data))
-      .catch(() => setUser(null))
 
-    async function mountUser(data) {
-      setUser(await data);
-    }
+  useEffect(() => {
+    apiFetch("/buyer/")
+      .then(setUser)
+      .catch((e) => { setUser(false) })
   }, [authorization])
 
+
+  if (user === null) {
+    return null;
+  }
 
 
   return (
     <UserContext.Provider value={UserContextValue}>
-      {console.log('render')}
-      <Layout />
+      <Site />
     </UserContext.Provider>
   );
 }

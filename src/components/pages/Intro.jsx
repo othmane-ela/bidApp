@@ -1,101 +1,135 @@
 import React from 'react'
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import {
     Button,
     Flex,
     Heading,
-    Image,
     Stack,
     Text,
+    Image,
     Box, Icon, createIcon,
-    useColorModeValue
+    useColorModeValue,
+    Container
 } from '@chakra-ui/react';
 
 
+const responsive = {
+    superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 3000 },
+        items: 1
+    },
+    desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 1
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 1
+    },
+    mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1
+    }
+};
+
 
 export default function Intro() {
-
     return (
-        <Box ml="14%" >
-            <Box>
-                <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}  >
-                    <Flex p={10} flex={1} align={'center'} justify={'center'}>
-                        <Stack
-                            as={Box}
-                            textAlign={'center'}
-                            spacing={{ base: 8, md: 14 }}
-                            py={{ base: 20, md: 36 }}>
-                            <Heading fontFamily={'Quattrocento'}
-                                fontWeight={600}
-                                fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-                                lineHeight={'110%'}>
-                                Make money from <br />
-                                <Text as={'span'} color={'green.400'}>
-                                    your audience
-                                </Text>
-                            </Heading>
-                            <Text color={'gray.500'}>
-                                Monetize your content by charging your most loyal readers and reward
-                                them loyalty points. Give back to your loyal readers by granting
-                                them access to your pre-releases and sneak-peaks.
+        <Box ml="14%">
+            <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}  >
+                <Flex flex={1} align={'center'} justify={'center'}>
+                    <Stack
+                        as={Box}
+                        textAlign={'center'}
+                        spacing={{ base: 8, md: 14 }}
+                        py={{ base: 20, md: 36 }}>
+                        <Heading fontFamily={'Quattrocento'}
+                            fontWeight={600}
+                            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+                            lineHeight={'110%'}>
+                            Make money from <br />
+                            <Text as={'span'} color={'green.400'}>
+                                your audience
                             </Text>
-                            <Stack
-                                direction={'column'}
-                                spacing={3}
-                                align={'center'}
-                                alignSelf={'center'}
-                                position={'relative'}>
+                        </Heading>
+                        <Text color={'gray.500'}>
+                            Monetize your content by charging your most loyal readers and reward
+                            them loyalty points. Give back to your loyal readers by granting
+                            them access to your pre-releases and sneak-peaks.
+                        </Text>
+                        <Stack
+                            direction={'column'}
+                            spacing={3}
+                            align={'center'}
+                            alignSelf={'center'}
+                            position={'relative'}>
 
-                                <Button
-                                    mt={10}
-                                    w={'full'}
-                                    bg={'green.400'}
-                                    colorScheme={'green'}
-                                    rounded={4}
-                                    boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
-                                    _hover={{
-                                        bg: 'green.500',
-                                    }}
-                                    _focus={{
-                                        bg: 'green.500',
-                                    }}>
-                                    Start your trial
-                                </Button>
-                                <Button variant={'link'} p={3} colorScheme={'blue'} size={'sm'}>
-                                    Learn more
-                                </Button>
-                                <Box>
-                                    <Icon
-                                        as={Arrow}
-                                        color={useColorModeValue('gray.800', 'gray.300')}
-                                        w={71}
-                                        position={'absolute'}
-                                        right={-71}
-                                        top={'10px'}
-                                    />
-                                    <Text
-                                        fontSize={'lg'}
-                                        fontFamily={'Caveat'}
-                                        position={'absolute'}
-                                        right={'-125px'}
-                                        top={'-15px'}
-                                        transform={'rotate(10deg)'}>
-                                        Starting at $15/mo
-                                    </Text>
-                                </Box>
-                            </Stack>
+                            <Button
+                                mt={10}
+                                w={'full'}
+                                bg={'green.400'}
+                                rounded={4}
+                                boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
+                                _hover={{
+                                    bg: 'green.500',
+                                }}
+                                _focus={{
+                                    bg: 'green.500',
+                                }}>
+                                Start your trial
+                            </Button>
+                            <Button variant={'link'} p={3} colorScheme={'blue'} size={'sm'}>
+                                Learn more
+                            </Button>
+                            <Box>
+                                <Icon
+                                    as={Arrow}
+                                    color={useColorModeValue('gray.800', 'gray.300')}
+                                    w={71}
+                                    position={'absolute'}
+                                    right={-71}
+                                    top={'10px'}
+                                />
+                                <Text
+                                    fontSize={'lg'}
+                                    fontFamily={'Caveat'}
+                                    position={'absolute'}
+                                    right={'-125px'}
+                                    top={'-15px'}
+                                    transform={'rotate(10deg)'}>
+                                    Starting at $15/mo
+                                </Text>
+                            </Box>
                         </Stack>
-                    </Flex>
-                    <Flex flex={1}>
-                        <Image
-                            alt={'Login Image'}
-                            objectFit={'cover'}
-                            src={
-                                'https://images.unsplash.com/photo-1436450412740-6b988f486c6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80'
-                            }
-                        />
-                    </Flex>
-                </Stack>
-            </Box>
+                    </Stack>
+                </Flex>
+                <Flex py={36} flex={1}>
+                    <Container>
+                        <Carousel responsive={responsive} py={{ base: 20, md: 36 }} >
+                            <Image
+
+                                objectFit="cover"
+                                src="https://images.unsplash.com/photo-1584254520639-ea67b9b108de?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fGF1Y3Rpb25zfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
+                                alt="Segun Adebayo"
+                            />
+                            <Image
+
+                                objectFit="cover"
+                                src="https://images.unsplash.com/photo-1606885118474-c8baf907e998?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGF1Y3Rpb25zfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
+                                alt="Segun Adebayo"
+                            />
+                            <Image
+
+                                objectFit="cover"
+                                src="https://images.unsplash.com/photo-1551913902-c92207136625?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80"
+                                alt="Segun Adebayo"
+                            />
+                        </Carousel>
+                    </Container>
+                </Flex>
+            </Stack>
         </Box>
     );
 }
@@ -112,3 +146,4 @@ const Arrow = createIcon({
         />
     ),
 });
+

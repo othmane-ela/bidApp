@@ -10,7 +10,7 @@ export default function SignUpForm() {
 
     return (
         <>
-            <Button onClick={onOpen} variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
+            <Button onClick={onOpen} variant="solid" rounded={3}>
                 Sign up
             </Button>
             <Modal

@@ -1,9 +1,12 @@
 import React from 'react';
-import { Box, SimpleGrid, HStack, useColorModeValue, SkeletonCircle, SkeletonText, Container, Skeleton, Heading, Icon } from '@chakra-ui/react'
-import { SiMarketo } from 'react-icons/si'
-import { RiShieldUserLine } from 'react-icons/ri'
+import propTypes from 'prop-types';
+import Offers from './../offers/Offers'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Container, Box, SimpleGrid, useColorModeValue, Skeleton, Heading, Icon } from '@chakra-ui/react'
+import { RiShieldUserLine } from 'react-icons/ri'
+
+
 const responsive = {
     superLargeDesktop: {
         // the naming can be any, depends on you.
@@ -25,37 +28,38 @@ const responsive = {
 };
 
 
-function Market() {
-
-    const customeBackground = useColorModeValue("gray.50", "#1F1F1F");
+export default function Market({ offers, onDelete }) {
 
     return (
         <>
             <Box w="100%" ml="14%" mt={20} px={5}>
-                <Container maxW="container.xxl">
-                    <Heading my={3} fontSize="xl" fontWeight="900" fontFamily={'Quattrocento'}> <Icon as={SiMarketo} w={10} h={10} p={2} /> Auctionaruim Market</Heading>
-                    <SimpleGrid minChildWidth="100%" mb={7}>
-                        <Carousel responsive={responsive} >
-                            <Skeleton height="200px" bg={customeBackground}></Skeleton>
-                        </Carousel>
-                    </SimpleGrid>
-                    <Heading my={3} fontSize="xl" fontWeight="900" fontFamily={'Quattrocento'}><Icon as={RiShieldUserLine} w={10} h={10} p={2} />Auctionaruim Market</Heading>
-                    <SimpleGrid minChildWidth="200px" spacing="40px"  >
-                        <Box padding="6" boxShadow="sm" bg={customeBackground} >
-                            <HStack>
-                                <SkeletonCircle size="10" />
-                                <SkeletonCircle size="10" />
-                                <SkeletonCircle size="10" />
-                            </HStack>
-                            <SkeletonText mt="4" noOfLines={3} spacing="4" />
-                        </Box>
-                    </SimpleGrid>
-                </Container>
+                <Trending />
+                <Offers offers={offers} onDelete={onDelete} />
             </Box>
         </>
     );
 }
 
+Market.propTypes = {
+    offers: propTypes.array
+}
 
-export default Market;
 
+function Trending() {
+
+    const customeBackground = useColorModeValue("gray.50", "#1F1F1F");
+
+    return < Box >
+        <Heading my={3} fontSize="xl" fontWeight="900" fontFamily={'Quattrocento'}><Icon as={RiShieldUserLine} w={10} h={10} p={2} />Auctionaruim Market</Heading>
+        <Container maxW="container.5xl">
+            <SimpleGrid minChildWidth="100%" mb={7}>
+                <Carousel responsive={responsive} >
+                    <Skeleton height="200px" bg={customeBackground}></Skeleton>
+                    <Skeleton height="200px" bg={customeBackground}></Skeleton>
+                    <Skeleton height="200px" bg={customeBackground}></Skeleton>
+                    <Skeleton height="200px" bg={customeBackground}></Skeleton>
+                </Carousel>
+            </SimpleGrid>
+        </Container>
+    </Box >
+}

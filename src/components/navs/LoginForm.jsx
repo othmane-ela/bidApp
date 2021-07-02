@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
-import { UserContext } from '../../hooks/Contexts';
+import { UserContext } from '../../hooks/contexts';
 import { Alert, AlertIcon, useColorModeValue, Button, FormControl, FormLabel, Input, Modal, ModalHeader, ModalBody, ModalOverlay, ModalContent, ModalFooter, ModalCloseButton, useDisclosure } from '@chakra-ui/react'
+import { ApiErrors, apiFetch } from '../../utils/api';
 
 
 export default function LoginForm() {
@@ -16,7 +17,7 @@ export default function LoginForm() {
     /**
      * DATA
      */
-    const { setAuthorization } = useContext(UserContext);
+    var { setAuthorization } = useContext(UserContext);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -30,29 +31,28 @@ export default function LoginForm() {
         setError(null);
         const data = JSON.stringify(Object.fromEntries(new FormData(e.target)));
 
-        const response = await fetch("http://localhost:8080/login", {
-            method: 'POST',
-            body: data,
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-            }
-        })
-        const responseData = await response.json();
-        if (response.ok) {
-            setAuthorization(responseData.token)
+        try {
+            const token = await apiFetch("/login", {
+                method: 'POST',
+                body: data,
+            });
+            setAuthorization(token);
         }
-        else {
-            setLoading(false)
-            setError(responseData.message)
+        catch (e) {
+            if (e instanceof ApiErrors) {
+                setError(e.message)
+            }
+            else {
+                console.error(e)
+            }
+            setLoading(false);
         }
     }
 
 
     return (
         <>
-            <Button onClick={onOpen} bg="green.300" colorScheme={'green'} variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
+            <Button onClick={onOpen} bg="green.300" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
                 Sign in
             </Button>
 

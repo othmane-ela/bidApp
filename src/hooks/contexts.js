@@ -7,5 +7,5 @@ export const UserContext = React.createContext({
     user: null,
     setUser: () => { },
     authorization: null,
-    setAuthorization: () => { },
+    setAuthorization: () => { }
 })

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../hooks/Contexts';
+import { UserContext } from '../../hooks/contexts';
 import { useColorModeValue, Box, VStack, Heading, useMediaQuery, IconButton, Icon, Spacer } from '@chakra-ui/react'
 import { MdLocalOffer } from 'react-icons/md'
 import ShortProfile from '../accounts/ShortProfile'
@@ -27,7 +27,7 @@ function DefaultPanel() {
         <>
             {isLargerThan1280 ?
                 <Box>
-                    {user != null &&
+                    {user != null && user !== false &&
                         < ShortProfile />
                     }
                     <VStack m={3} p={3} spacing={1} align="stretch" textAlign="left" borderWidth="0px" rounded={8}>
@@ -57,7 +57,7 @@ function DefaultPanel() {
                         <Heading as="h6" size="md" p={3}>
                             Subscribe Now !
                         </Heading>
-                        <Heading size="xl">25$ per Mounth</Heading>
+                        <Heading size="xl" p={3}>25$ per Mounth</Heading>
                     </Box>
                 </Box>
 
@@ -72,21 +72,16 @@ function DefaultPanel() {
                         <IconButton mx={4} icon={GiFiles} isRound="true"></IconButton>
                     </Box>
                 </VStack>
-
             }
-
         </>
-
-
     );
 }
 
 function AsideNav() {
 
-    const asideBackground = useColorModeValue("gray.50", "#151515");
 
     return (
-        <Box width={"14%"} height="auto" bg={asideBackground} shadow="md" position="fixed" zIndex="0" mt="56px">
+        <Box width={"14%"} height="auto" position="fixed" zIndex="0" mt="56px">
             < DefaultPanel />
         </Box >
     );

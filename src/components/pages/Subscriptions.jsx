@@ -86,7 +86,7 @@ export default function Subscriptions() {
                                 </ListItem>
                             </List>
                             <Box w="80%" pt={7}>
-                                <Button w="full" bg="green.300" colorScheme={'green'} variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
+                                <Button w="full" bg="green.300" variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
                                     Start trial
                                 </Button>
                             </Box>
@@ -138,7 +138,7 @@ export default function Subscriptions() {
                                     </ListItem>
                                 </List>
                                 <Box w="80%" pt={7}>
-                                    <Button w="full" bg="green.300" colorScheme={'green'} variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
+                                    <Button w="full" bg="green.300" variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
                                         Start trial
                                     </Button>
                                 </Box>
@@ -181,7 +181,7 @@ export default function Subscriptions() {
                                 </ListItem>
                             </List>
                             <Box w="80%" pt={7}>
-                                <Button w="full" bg="green.300" colorScheme={'green'} variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
+                                <Button w="full" bg="green.300" variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
                                     Start trial
                                 </Button>
                             </Box>
