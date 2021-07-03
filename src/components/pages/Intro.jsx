@@ -130,7 +130,7 @@ export default function Intro() {
                     </Container>
                 </Flex>
             </Stack>
-        </Box>
+        </Box >
     );
 }
 

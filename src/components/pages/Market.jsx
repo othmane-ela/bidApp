@@ -4,7 +4,7 @@ import Offers from './../offers/Offers'
 import { OfferBoxCarousel } from './../../ui/boxes/Boxes'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Box, SimpleGrid, Heading, Icon, useColorModeValue } from '@chakra-ui/react'
+import { Box, SimpleGrid, Heading, Icon } from '@chakra-ui/react'
 import { RiShieldUserLine } from 'react-icons/ri'
 
 

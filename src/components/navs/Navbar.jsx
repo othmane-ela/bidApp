@@ -66,12 +66,8 @@ export default function Navbar() {
                             </MenuButton>
                             <Portal>
                                 <MenuList bg={customeBackground}>
-                                    {/* 
-                                     <MenuItem><Link fontWeight="bold" textDecoration="none" _hover={{ color: 'teal.00' }} >Market</Link></MenuItem>
-                                    <MenuItem><Link _hover={{ color: 'green.300' }}  >Subscriptions</Link></MenuItem>
-                                
-                                    */}
-
+                                    <MenuItem><Link to="/market" >Market</Link></MenuItem>
+                                    <MenuItem><Link to="/subscriptions" >Subscriptions</Link></MenuItem>
                                 </MenuList>
                             </Portal>
                         </Menu>
