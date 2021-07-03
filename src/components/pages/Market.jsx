@@ -1,9 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Offers from './../offers/Offers'
+import { OfferBoxCarousel } from './../../ui/boxes/Boxes'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Container, Box, SimpleGrid, useColorModeValue, Skeleton, Heading, Icon } from '@chakra-ui/react'
+import { Box, SimpleGrid, Heading, Icon, useColorModeValue } from '@chakra-ui/react'
 import { RiShieldUserLine } from 'react-icons/ri'
 
 
@@ -32,7 +33,7 @@ export default function Market({ offers, onDelete }) {
 
     return (
         <>
-            <Box w="100%" ml="14%" mt={20} px={5}>
+            <Box w="100%" ml="14%" mt={20} px={5} >
                 <Trending />
                 <Offers offers={offers} onDelete={onDelete} />
             </Box>
@@ -44,22 +45,19 @@ Market.propTypes = {
     offers: propTypes.array
 }
 
-
 function Trending() {
-
-    const customeBackground = useColorModeValue("gray.50", "#1F1F1F");
 
     return < Box >
         <Heading my={3} fontSize="xl" fontWeight="900" fontFamily={'Quattrocento'}><Icon as={RiShieldUserLine} w={10} h={10} p={2} />Auctionaruim Market</Heading>
-        <Container maxW="container.5xl">
-            <SimpleGrid minChildWidth="100%" mb={7}>
-                <Carousel responsive={responsive} >
-                    <Skeleton height="200px" bg={customeBackground}></Skeleton>
-                    <Skeleton height="200px" bg={customeBackground}></Skeleton>
-                    <Skeleton height="200px" bg={customeBackground}></Skeleton>
-                    <Skeleton height="200px" bg={customeBackground}></Skeleton>
-                </Carousel>
-            </SimpleGrid>
-        </Container>
+
+        <SimpleGrid minChildWidth="100%" mb={7}>
+            <Carousel responsive={responsive}  >
+                <OfferBoxCarousel />
+                <OfferBoxCarousel />
+                <OfferBoxCarousel />
+                <OfferBoxCarousel />
+            </Carousel>
+        </SimpleGrid>
+
     </Box >
 }

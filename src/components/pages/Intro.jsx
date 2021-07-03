@@ -49,9 +49,9 @@ export default function Intro() {
                             fontWeight={600}
                             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
                             lineHeight={'110%'}>
-                            Make money from <br />
+                            Auctionaruim Auctions <br />
                             <Text as={'span'} color={'green.400'}>
-                                your audience
+                                Market
                             </Text>
                         </Heading>
                         <Text color={'gray.500'}>

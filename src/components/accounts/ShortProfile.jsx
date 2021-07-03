@@ -50,8 +50,6 @@ export default function ShortProfile() {
                         <Badge
                             px={2}
                             py={1}
-                            colorScheme="green.300"
-                            bg={useColorModeValue('gray.100', 'green.300')}
                             fontWeight={'400'}>
                             {user.type}
                         </Badge>
@@ -75,10 +73,10 @@ export default function ShortProfile() {
 
 
                     <Stack mt={8} direction={'column'} spacing={4}>
-                        <Button p={1} bg="green.300" colorScheme={'green'} variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
+                        <Button p={1} bg="green.300" variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
                             Deposit  +
                         </Button>
-                        <Button p={1} bg="green.300" colorScheme={'green'} variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
+                        <Button p={1} bg="green.300" variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
                             Withdraw
                         </Button>
                     </Stack>

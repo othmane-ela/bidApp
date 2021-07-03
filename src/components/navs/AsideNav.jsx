@@ -52,8 +52,8 @@ function DefaultPanel() {
                             </Link>
                         </Box>
                     </VStack>
-                    <Spacer></Spacer>
-                    <Box bgGradient="linear(to-l,  teal.500, green.500)" m={3} p={3} rounded={8} >
+
+                    <Box bgGradient="linear(to-l,  teal.500, green.500)" my={20} mx={5} p={3} rounded={8} >
                         <Heading as="h6" size="md" p={3}>
                             Subscribe Now !
                         </Heading>
@@ -78,10 +78,22 @@ function DefaultPanel() {
 }
 
 function AsideNav() {
-
-
+    const customeBackground = useColorModeValue("gray.50", "#151515");
+    const customeScrollBackground = useColorModeValue("#e2e2e2", "#2a2a2a");
     return (
-        <Box width={"14%"} height="auto" position="fixed" zIndex="0" mt="56px">
+        <Box width={"14%"} height="100vh" position="fixed" zIndex="0" mt="56px" bg={customeBackground} overflow="auto" css={{
+            '&::-webkit-scrollbar': {
+                width: '10px',
+            },
+            '&::-webkit-scrollbar-track': {
+                width: '10px',
+                boxShadow: 'inset 0 0 5px ' + customeScrollBackground,
+            },
+            '&::-webkit-scrollbar-thumb': {
+                background: customeScrollBackground,
+                borderRadius: '24px',
+            },
+        }} >
             < DefaultPanel />
         </Box >
     );
