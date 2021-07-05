@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { UserContext } from '../../hooks/contexts';
 import { Alert, AlertIcon, useColorModeValue, Button, FormControl, FormLabel, Input, Modal, ModalHeader, ModalBody, ModalOverlay, ModalContent, ModalFooter, ModalCloseButton, useDisclosure } from '@chakra-ui/react'
 import { ApiErrors, apiFetch } from '../../utils/api';
-
+import SocialMedia from './../../ui/SoacialMedia'
 
 export default function LoginForm() {
 
@@ -73,8 +73,8 @@ export default function LoginForm() {
                                 <FormLabel>Password</FormLabel>
                                 <Input type="password" name="password" placeholder="********" required />
                             </FormControl>
+                            <SocialMedia />
                         </ModalBody>
-
                         <ModalFooter>
                             <Button type="submit" isLoading={loading} mr={3} bg="green.300" colorScheme={'green'} variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
                                 Login

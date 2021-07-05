@@ -109,19 +109,19 @@ export default function Intro() {
                     <Container>
                         <Carousel responsive={responsive} py={{ base: 20, md: 36 }} >
                             <Image
-
+                                rounded={5}
                                 objectFit="cover"
                                 src="https://images.unsplash.com/photo-1584254520639-ea67b9b108de?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fGF1Y3Rpb25zfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
                                 alt="Segun Adebayo"
                             />
                             <Image
-
+                                rounded={5}
                                 objectFit="cover"
                                 src="https://images.unsplash.com/photo-1606885118474-c8baf907e998?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGF1Y3Rpb25zfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
                                 alt="Segun Adebayo"
                             />
                             <Image
-
+                                rounded={5}
                                 objectFit="cover"
                                 src="https://images.unsplash.com/photo-1551913902-c92207136625?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80"
                                 alt="Segun Adebayo"

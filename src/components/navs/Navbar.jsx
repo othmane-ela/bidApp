@@ -16,8 +16,8 @@ import {
     Heading, InputLeftElement, InputGroup
 } from '@chakra-ui/react'
 import { SunIcon, MoonIcon, DragHandleIcon, Search2Icon, BellIcon, ChatIcon, CalendarIcon } from '@chakra-ui/icons'
-import LoginForm from './LoginForm';
-import SingupForm from './SignUpForm'
+import LoginForm from '../accounts/LoginForm';
+import SingupForm from '../accounts/SignUpForm'
 
 
 
@@ -53,11 +53,27 @@ export default function Navbar() {
                                     Market
                                 </Link>
                             </WrapItem>
-                            <WrapItem>
-                                <Link to="/subscriptions">
-                                    Subscriptions
-                                </Link>
-                            </WrapItem>
+                            {user !== null ?
+                                <>
+                                    <WrapItem>
+                                        <Link to="/sellers">
+                                            Sellers
+                                        </Link>
+                                    </WrapItem>
+                                    <WrapItem>
+                                        <Link to="/sellers">
+                                            Offers
+                                        </Link>
+                                    </WrapItem>
+                                </>
+                                :
+                                <WrapItem>
+                                    <Link to="/subscriptions">
+                                        Subscriptions
+                                    </Link>
+                                </WrapItem>
+                            }
+
                         </Wrap>
                         :
                         <Menu >

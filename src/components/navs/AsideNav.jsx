@@ -50,7 +50,7 @@ function DefaultPanel() {
                     </VStack>
                     <Box bgGradient="linear(to-l,  teal.500, green.500)" my={20} mx={5} p={3} rounded={8} >
                         <Heading as="h6" size="md" p={3}>
-                            Subscribe Now !
+                            Subscribe Now
                         </Heading>
                         <Heading size="xl" p={3}>25$ per Mounth</Heading>
                     </Box>
@@ -104,7 +104,6 @@ function SellerPanel() {
                     </Link>
                 </Box>
             </Box>
-
             :
             <VStack m={3} p={3}>
                 <Box>

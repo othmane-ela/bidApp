@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import { UserContext } from './hooks/contexts';
-import Site from './components/pages/Site';
+import Site from './components/site/Site';
 import { apiFetch } from './utils/api';
 
 

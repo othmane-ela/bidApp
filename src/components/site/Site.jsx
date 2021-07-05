@@ -9,18 +9,22 @@ import { UserContext } from '../../hooks/contexts';
 
 import Navbar from '../navs/Navbar'
 import AsideNav from '../navs/AsideNav'
-import Intro from './Intro'
-import Subscriptions from './Subscriptions'
-import Market from './Market'
+import Intro from './buyer/Intro'
+import Subscriptions from './buyer/Subscriptions'
+import Market from './shared/Market'
+import OfferDetails from './shared/OfferDetails'
 
 import { Flex } from '@chakra-ui/react';
 import { useOffers } from '../../hooks/offers';
 import { useEffect } from 'react';
 
+
+
+
 function Layout() {
 
     const { user } = useContext(UserContext);
-    const { offers, fetchOffers, deleteOffer } = useOffers();
+    const { offers, fetchOffers } = useOffers();
 
     const checkUser = function () {
         return user !== null && user !== false ? true : false;
@@ -47,7 +51,10 @@ function Layout() {
                         {checkUser() ? <Redirect to="/market" /> : <Intro />}
                     </Route>
                     <Route exact path="/market">
-                        <Market offers={offers} onDelete={deleteOffer} />
+                        <Market offers={offers} />
+                    </Route>
+                    <Route exact path="/offer/:id">
+                        <OfferDetails />
                     </Route>
                 </Switch>
 

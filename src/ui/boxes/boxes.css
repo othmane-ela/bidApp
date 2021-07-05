@@ -109,12 +109,13 @@
     .magic-card:hover .magic-card__title {
         color: #FFF;
     }
-    .magic-card:hover{
-        transform: scale(2);
-        cursor: pointer;
-        z-index: 2;
-    }
   
+    .magic-card:hover{
+    /*  transform: scale(2);  z-index: 2;  */
+        cursor: pointer;
+       
+    }
+
   .magic-card__excerpt {
     font-weight: 300;
   }
@@ -126,7 +127,7 @@
     z-index: 10;
     height: 100%;
     width: 100%;
-    background: linear-gradient( 0deg , rgba(0,0,0,1) 0%, rgba(0,0,0,0) 90%, rgba(248,231,166,0) 100%);
+    background:linear-gradient( 0deg , rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%, rgba(248,231,166,0) 100%);
     opacity: 1;
   }
 
