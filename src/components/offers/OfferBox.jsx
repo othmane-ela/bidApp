@@ -22,6 +22,8 @@ export default function OfferBox({ offer }) {
     const pusher = new Pusher('f856f46602ee2819adc2', {
         cluster: 'eu'
     });
+
+
     var channel = pusher.subscribe("add-Bid-Offer-" + offer.id);
     useEffect(function () {
         try {
@@ -43,11 +45,11 @@ export default function OfferBox({ offer }) {
                 <Box className="magic-card__text-no-wrapper">
                     <Box>
                         <HStack >
-                            <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-                            <Heading size="xs" px={2} display="inline-block">{offer.nameSeller}</Heading><Icon color="green.300" as={GoVerified} />
+                            <Avatar name="Dan Abrahmov" src="https://bit.ly/sage-adebayo" />
+                            <Heading size="xs" px={2} display="inline-block">{offer.nameSeller}</Heading><Icon color="blue.300" as={GoVerified} />
                         </HStack >
                         <Stack textAlign="left">
-                            <Heading size="xs" mt={1}>{offer.name} | <StateOffer startedAt={dateFormat(offer.startedAt)} /></Heading>
+                            <Heading size="xs" mt={1}>{offer.name} | <StateOffer startedAt={offer.startedAt} />  </Heading>
                             <Text fontSize="14px" >{dateFormat(offer.startedAt)} | {dateFormat(offer.endAt)} </Text>
                             <HStack >
                                 {bid !== null ?
@@ -70,10 +72,13 @@ export default function OfferBox({ offer }) {
 
 
 function StateOffer({ startedAt }) {
-    if (dateFormat(new Date()) >= startedAt) {
+
+    if (new Date() > new Date(startedAt)) {
         return <Badge mx={2} variant="solid" bg="red.600">LIVE</Badge>
     }
+
     return <Badge mx={2} variant="solid" bg="gray.600">Soon !</Badge>
+
 }
 
 

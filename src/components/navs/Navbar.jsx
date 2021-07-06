@@ -146,7 +146,7 @@ export default function Navbar() {
 
 function AccountSection() {
     const customeBackground = useColorModeValue("white", "#1F1F1F");
-    const { setAuthorization } = useContext(UserContext);
+    const { setAuthorization, user } = useContext(UserContext);
 
     const handleClick = function (e) {
         e.preventDefault();
@@ -156,7 +156,11 @@ function AccountSection() {
     }
     return <Menu >
         <MenuButton ml={8}>
-            <Avatar size="sm" name="Dan Abrahmov" src="https://bit.ly/sage-adebayo" />
+            {
+                user.type === 'Seller' ? <Avatar size="sm" name="Dan Abrahmov" src="https://bit.ly/sage-adebayo" />
+                    :
+                    <Avatar size="sm" name="Dan Abrahmov" src="https://bit.ly/kent-c-dodds" />
+            }
         </MenuButton>
         <Portal>
             <MenuList bg={customeBackground}>

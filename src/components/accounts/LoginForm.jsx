@@ -36,7 +36,7 @@ export default function LoginForm() {
                 method: 'POST',
                 body: data,
             });
-            setAuthorization(token);
+            setAuthorization(token)
         }
         catch (e) {
             if (e instanceof ApiErrors) {
@@ -52,7 +52,7 @@ export default function LoginForm() {
 
     return (
         <>
-            <Button onClick={onOpen} bg="green.300" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
+            <Button onClick={onOpen} colorScheme="green" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
                 Sign in
             </Button>
 
@@ -76,7 +76,7 @@ export default function LoginForm() {
                             <SocialMedia />
                         </ModalBody>
                         <ModalFooter>
-                            <Button type="submit" isLoading={loading} mr={3} bg="green.300" colorScheme={'green'} variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
+                            <Button type="submit" mr={3} isLoading={loading} colorScheme="green" variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
                                 Login
                             </Button>
                             <Button onClick={onClose}>Cancel</Button>

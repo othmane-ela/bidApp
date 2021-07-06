@@ -50,7 +50,7 @@ export default function Intro() {
                             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
                             lineHeight={'110%'}>
                             Auctionaruim Auctions <br />
-                            <Text as={'span'} color={'green.400'}>
+                            <Text as={'span'} colorScheme="green">
                                 Market
                             </Text>
                         </Heading>
@@ -69,18 +69,13 @@ export default function Intro() {
                             <Button
                                 mt={10}
                                 w={'full'}
-                                bg={'green.400'}
+                                colorScheme="green"
                                 rounded={4}
                                 boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
-                                _hover={{
-                                    bg: 'green.500',
-                                }}
-                                _focus={{
-                                    bg: 'green.500',
-                                }}>
+                            >
                                 Start your trial
                             </Button>
-                            <Button variant={'link'} p={3} colorScheme={'blue'} size={'sm'}>
+                            <Button variant={'link'} p={3} colorScheme="green" size={'sm'}>
                                 Learn more
                             </Button>
                             <Box>

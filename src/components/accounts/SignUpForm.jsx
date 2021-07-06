@@ -97,7 +97,7 @@ export default function SignUpForm() {
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button type="submit" isLoading={loading} mr={3} bg="green.300" colorScheme={'green'} variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
+                            <Button type="submit" isLoading={loading} mr={3} colorScheme="green" variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
                                 Sign up
                             </Button>
                             <Button onClick={onClose}>Cancel</Button>

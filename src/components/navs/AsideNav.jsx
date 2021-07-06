@@ -48,7 +48,27 @@ function DefaultPanel() {
                             </Link>
                         </Box>
                     </VStack>
-                    <Box bgGradient="linear(to-l,  teal.500, green.500)" my={20} mx={5} p={3} rounded={8} >
+                    <VStack m={3} p={3} spacing={1} align="stretch" textAlign="left" borderWidth="0px" rounded={8}>
+                        <Heading as="h6" size="md" p={3}>
+                            <Icon as={RiCompassDiscoverFill} w={10} h={10} p={2} />Discovery
+                        </Heading>
+                        <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                            <Link to="/market">
+                                <Icon as={SiMarketo} w={10} h={10} p={2} />Market
+                            </Link>
+                        </Box>
+                        <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                            <Link to="/subscriptions">
+                                <Icon as={GiFiles} w={10} h={10} p={2} />Subscriptions
+                            </Link>
+                        </Box>
+                        <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                            <Link to="/sellers">
+                                <Icon as={RiShieldUserLine} w={10} h={10} p={2} />Sellers
+                            </Link>
+                        </Box>
+                    </VStack>
+                    <Box bgGradient="linear(to-l,  teal.500, green.700)" my={20} mx={5} p={3} rounded={8} >
                         <Heading as="h6" size="md" p={3}>
                             Subscribe Now
                         </Heading>
@@ -122,8 +142,9 @@ function SellerPanel() {
 }
 
 
-
-
+function BuyerPanel() {
+    return < ShortProfile />
+}
 
 export default function AsideNav() {
     const { user } = useContext(UserContext);
@@ -143,7 +164,9 @@ export default function AsideNav() {
                 borderRadius: '24px',
             },
         }} >
-            {user && user.type === 'Seller' ? <SellerPanel /> : < DefaultPanel />}
+            {user && user.type === 'Seller' && <SellerPanel />}
+            {user && user.type === 'Buyer' && <><BuyerPanel /><DefaultPanel /></>}
+            {!user && < DefaultPanel />}
         </Box >
     );
 }

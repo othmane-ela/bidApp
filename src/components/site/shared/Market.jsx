@@ -3,8 +3,8 @@ import propTypes from 'prop-types';
 import Offers from '../../offers/Offers'
 // import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Box } from '@chakra-ui/react'
-
+import { Box, Heading, Icon } from '@chakra-ui/react'
+import { SiMarketo } from 'react-icons/si'
 //import { Box, SimpleGrid, Heading, Icon, Image } from '@chakra-ui/react'
 //import { RiShieldUserLine } from 'react-icons/ri'
 
@@ -36,6 +36,7 @@ export default function Market({ offers, onDelete }) {
         <>
             <Box w="100%" ml="14%" mt={20} px={5} >
                 <Offers offers={offers} onDelete={onDelete} />
+                <Heading my={3} fontSize="xl" fontWeight="900" fontFamily={'Quattrocento'}> <Icon as={SiMarketo} w={10} h={10} p={2} /> Sellers</Heading>
             </Box>
         </>
     );
