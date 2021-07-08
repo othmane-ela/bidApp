@@ -13,7 +13,6 @@ import { SiMarketo } from 'react-icons/si'
  * @returns 
  */
 
-
 /**
  * 
  * 
@@ -22,7 +21,7 @@ import { SiMarketo } from 'react-icons/si'
 export default function Offers({ offers }) {
     return (
         <Box>
-            {offers === null || offers.length === 0 ? < LoaderOfferList /> :
+            {offers === null || typeof offers === 'undefined' ? < LoaderOfferList /> :
                 <>
                     <LiveOffersList offers={offers} />
                     <SoonOffersList offers={offers} />
@@ -77,8 +76,8 @@ LiveOffersList.propTypes = {
 
 
 /*
-          const [loading, setLoading] = useState(false);
-            const handleDelete = async function (e) {
+        const [loading, setLoading] = useState(false);
+         const handleDelete = async function (e) {
         e.preventDefault();
         setLoading(true)
         await onDelete(offer)

@@ -1,14 +1,13 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Offers from '../../offers/Offers'
-// import Carousel from "react-multi-carousel";
+import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Box, Heading, Icon } from '@chakra-ui/react'
 import { SiMarketo } from 'react-icons/si'
-//import { Box, SimpleGrid, Heading, Icon, Image } from '@chakra-ui/react'
-//import { RiShieldUserLine } from 'react-icons/ri'
+import { Box, SimpleGrid, Heading, Icon, Image } from '@chakra-ui/react'
+import { RiShieldUserLine } from 'react-icons/ri'
 
-/*
+
 const responsive = {
     superLargeDesktop: {
         // the naming can be any, depends on you.
@@ -28,13 +27,14 @@ const responsive = {
         items: 1
     }
 };
-*/
+
 
 export default function Market({ offers, onDelete }) {
 
     return (
         <>
             <Box w="100%" ml="14%" mt={20} px={5} >
+                <Trending />
                 <Offers offers={offers} onDelete={onDelete} />
                 <Heading my={3} fontSize="xl" fontWeight="900" fontFamily={'Quattrocento'}> <Icon as={SiMarketo} w={10} h={10} p={2} /> Sellers</Heading>
             </Box>
@@ -46,12 +46,12 @@ Market.propTypes = {
     offers: propTypes.array
 }
 
-/*
+
 function Trending() {
 
     return < Box >
-        <Heading my={3} fontSize="xl" fontWeight="900" fontFamily={'Quattrocento'}><Icon as={RiShieldUserLine} w={10} h={10} p={2} />Auctionaruim Market</Heading>
-        <SimpleGrid mb={7}>
+        <Heading mb={5} fontSize="xl" fontWeight="900" fontFamily={'Quattrocento'}><Icon as={RiShieldUserLine} w={10} h={10} p={2} />Auctionaruim Market #Trending</Heading>
+        <SimpleGrid mb={7} p={3}>
             <Carousel responsive={responsive}  >
                 <Image
                     width="90%"
@@ -77,8 +77,13 @@ function Trending() {
                     src="https://images.unsplash.com/photo-1551913902-c92207136625?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80"
                     alt="Segun Adebayo"
                 />
+                <Image
+                    width="90%"
+                    objectFit="cover"
+                    src="https://images.unsplash.com/photo-1551913902-c92207136625?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80"
+                    alt="Segun Adebayo"
+                />
             </Carousel>
         </SimpleGrid>
     </Box >
 }
-*/

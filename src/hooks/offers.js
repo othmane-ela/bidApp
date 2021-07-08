@@ -37,6 +37,10 @@ export function useOffers() {
         deleteOffer : async function(offer) {
             await apiFetch("/offer/delete/" + offer.id,{method:'DELETE'})
             distpatch({type:'DELETE_OFFER',payload:offer})
+        },
+        addOffer: async function (offer) {
+             await apiFetch("/offer/new",{method:'POST'})
+            distpatch({type:'ADD_OFFER',payload:offer})
         }
     }
 }

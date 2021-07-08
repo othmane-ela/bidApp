@@ -72,7 +72,9 @@ export default function ShortProfile() {
                         />
 
                     }
-
+                    <Heading fontSize={'2xl'} fontFamily={'body'} py={3}>
+                        {user.firstName} {user.lastName}
+                    </Heading>
                     <Stack align={'center'} justify={'center'} direction={'row'} mt={1} mb={3}>
                         <Badge
                             px={2}

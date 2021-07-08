@@ -7,15 +7,16 @@ export default function All() {
     return (
         <Center p={8}>
             <Stack spacing={2} align={'center'} maxW={'md'} w={'full'}>
+
                 {/* Facebook */}
-                <Button w={'full'} colorScheme={'facebook'} leftIcon={<FaFacebook />}>
+                <Button w={'full'} mb={5} colorScheme={'facebook'} leftIcon={<FaFacebook />}>
                     <Center>
                         <Text>Continue with Facebook</Text>
                     </Center>
                 </Button>
 
                 {/* Google */}
-                <Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />}>
+                <Button w={'full'} my={5} variant={'outline'} leftIcon={<FcGoogle />}>
                     <Center>
                         <Text>Sign in with Google</Text>
                     </Center>

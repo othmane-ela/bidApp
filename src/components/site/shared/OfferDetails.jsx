@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Stack, Flex, Container, Image, Heading, Text, Avatar, Tabs, TabList, Tab, TabPanels, TabPanel, useColorModeValue, Icon, StatGroup, Stat, StatLabel, StatNumber, StatHelpText, StatArrow } from '@chakra-ui/react'
-import { apiFetch } from './../../../utils/api'
+import {
+    Box, Stack, Flex, Container, Image,
+    Heading, Text, Avatar, Tabs, TabList, Tab, TabPanels,
+    TabPanel, useColorModeValue, Icon, StatGroup, Stat, StatLabel,
+    StatNumber, StatHelpText, StatArrow, useNumberInput, HStack, Button, Input, Badge
+} from '@chakra-ui/react'
+import { apiFetch, ApiErrors } from './../../../utils/api'
 import { IoAnalyticsSharp, IoSearchSharp } from 'react-icons/io5'
 import { AiOutlineDollar } from 'react-icons/ai'
 import Pusher from 'pusher-js';
@@ -87,8 +92,8 @@ function Discover({ offer, bid }) {
     return <Tabs variant="soft-rounded" colorScheme="green">
         <TabList borderWidth="1px" rounded={10} p={5}>
             <Tab>Info</Tab>
+            <Tab>Place bid</Tab>
             <Tab>Owner</Tab>
-            <Tab>History</Tab>
             <Tab>Bids</Tab>
             <Tab>Comments</Tab>
         </TabList>
@@ -96,17 +101,17 @@ function Discover({ offer, bid }) {
             <TabPanel>
                 <Information currentPrice={offer.currentPrice} lastBid={bid} />
             </TabPanel>
+            <TabPanel>
+                <PutBid idOffer={offer.id} />
+            </TabPanel>
             <TabPanel >
                 <Owner seller={offer.nameSeller} />
-            </TabPanel>
-            <TabPanel>
-                <History description={offer.description} />
             </TabPanel>
             <TabPanel>
                 {<Bids offerId={offer.id} />}
             </TabPanel>
             <TabPanel>
-
+                Comment
             </TabPanel>
         </TabPanels>
     </Tabs >
@@ -159,31 +164,6 @@ function Bids({ offerId }) {
  *  CHILDS OF TABS
  * @returns 
  */
-
-
-function History({ description }) {
-    return <Container maxW={'5xl'} p={3} >
-
-        <Stack spacing={4} width="100%">
-            <Text
-                color={'blue.400'}
-                fontWeight={600}
-                fontSize={'sm'}
-                bg={useColorModeValue('blue.50', 'blue.900')}
-                p={2}
-                alignSelf={'flex-start'}
-                rounded={'md'}>
-                History
-            </Text>
-            <Text fontWeight="bold"><Text as="span"></Text>{description}</Text>
-        </Stack>
-
-    </Container>
-}
-
-
-
-
 
 function Owner({ seller }) {
     return <Container maxW={'5xl'} p={3} >
@@ -273,7 +253,6 @@ function BidOption({ currentPrice, lastBid }) {
 
     const price = lastBid !== null ? lastBid.price : currentPrice;
 
-
     return <Box w="100%" ml="14%" mt={20}>
         <StatGroup >
             <Stat>
@@ -295,4 +274,79 @@ function BidOption({ currentPrice, lastBid }) {
             </Stat>
         </StatGroup>
     </Box>
+}
+
+
+function PutBid({ idOffer }) {
+    return <>
+        <Text mb={5} textAlign="center">
+            <Badge variant="solid" colorScheme="yellow" mr={2}>
+                Notice
+            </Badge>  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        </Text>
+        <Box width="60%" mx="auto">
+            <HookUsage idOffer={idOffer} />
+        </Box>
+    </>
+}
+
+function HookUsage({ idOffer }) {
+    const {
+        getInputProps,
+        getIncrementButtonProps,
+        getDecrementButtonProps,
+    } = useNumberInput({
+        step: 1,
+        defaultValue: 10,
+        min: 1,
+        max: 500,
+        precision: 2,
+    })
+
+    const inc = getIncrementButtonProps()
+    const dec = getDecrementButtonProps()
+    const input = getInputProps()
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+
+    const handleClick = async function (e) {
+        setLoading(true);
+        e.preventDefault();
+        const body = {
+            "price": input.value,
+            "idOffer": idOffer
+        }
+
+        try {
+            const response = await apiFetch("/bid/new", {
+                method: 'POST',
+                body: JSON.stringify(body),
+            });
+            console.log(response);
+            setLoading(false);
+        }
+        catch (e) {
+            if (e instanceof ApiErrors) {
+                setError(e.message)
+            }
+            else {
+                console.error(e)
+            }
+            setLoading(false);
+        }
+
+    }
+
+    return (<>
+        <HStack maxW="320px">
+            {error}
+            <Button {...inc}>+</Button>
+            <Input {...input} />
+            <Button {...dec}>-</Button>
+        </HStack>
+        <Button type="submit" onClick={handleClick} isLoading={loading} w="100%" mr={3} my={6} colorScheme="green" variant="solid" _hover={{ backgroundColor: 'green.500' }} rounded={3}>
+            Bid
+        </Button>
+    </>
+    )
 }

@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { UserContext } from '../../hooks/contexts';
 import { useColorModeValue, Box, VStack, Heading, useMediaQuery, IconButton, Icon } from '@chakra-ui/react'
 import { MdLocalOffer } from 'react-icons/md'
 import ShortProfile from '../accounts/ShortProfile'
 import { GiFiles } from 'react-icons/gi'
 import { SiMarketo } from 'react-icons/si'
-import { RiShieldUserLine } from 'react-icons/ri'
+import { RiShieldUserLine, RiUserFollowLine } from 'react-icons/ri'
 import { FaWarehouse, FaFileInvoiceDollar, FaBoxes } from 'react-icons/fa'
 import { RiCompassDiscoverFill } from 'react-icons/ri'
-
+import { BiPurchaseTagAlt } from 'react-icons/bi'
+import { CgShortcut } from 'react-icons/cg'
+import { AiOutlineFileDone } from 'react-icons/ai'
 
 
 function DefaultPanel() {
@@ -19,6 +21,12 @@ function DefaultPanel() {
      */
     const customeBackground = useColorModeValue("gray.50", "#1F1F1F");
     const [isLargerThan1280] = useMediaQuery("(min-width: 1200px)")
+    const primarycolor = useColorModeValue("#38a169", "#9ae6b4");
+
+    const hoverStyle = {
+        fontWeight: "bold",
+        color: primarycolor
+    }
     /**
      * DATA
      */
@@ -28,46 +36,27 @@ function DefaultPanel() {
             {isLargerThan1280 ?
                 <Box>
                     {/* BUYER AND DEFAULT PANEL  */}
-                    <VStack m={3} p={3} spacing={1} align="stretch" textAlign="left" borderWidth="0px" rounded={8}>
+                    <VStack spacing={1} align="stretch" textAlign="left" borderWidth="0px" rounded={8}>
                         <Heading as="h6" size="md" p={3}>
                             <Icon as={RiCompassDiscoverFill} w={10} h={10} p={2} />Discovery
                         </Heading>
-                        <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
-                            <Link to="/market">
+                        <Box p={3} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                            <NavLink to="/market" activeStyle={hoverStyle} >
                                 <Icon as={SiMarketo} w={10} h={10} p={2} />Market
-                            </Link>
+                            </NavLink>
                         </Box>
-                        <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
-                            <Link to="/subscriptions">
-                                <Icon as={GiFiles} w={10} h={10} p={2} />Subscriptions
-                            </Link>
-                        </Box>
-                        <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
-                            <Link to="/sellers">
+                        <Box p={3} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                            <NavLink to="/sellers" activeStyle={hoverStyle}>
                                 <Icon as={RiShieldUserLine} w={10} h={10} p={2} />Sellers
-                            </Link>
+                            </NavLink>
+                        </Box>
+                        <Box p={3} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                            <NavLink to="/subscriptions" activeStyle={hoverStyle} >
+                                <Icon as={GiFiles} w={10} h={10} p={2} />Subscriptions
+                            </NavLink>
                         </Box>
                     </VStack>
-                    <VStack m={3} p={3} spacing={1} align="stretch" textAlign="left" borderWidth="0px" rounded={8}>
-                        <Heading as="h6" size="md" p={3}>
-                            <Icon as={RiCompassDiscoverFill} w={10} h={10} p={2} />Discovery
-                        </Heading>
-                        <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
-                            <Link to="/market">
-                                <Icon as={SiMarketo} w={10} h={10} p={2} />Market
-                            </Link>
-                        </Box>
-                        <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
-                            <Link to="/subscriptions">
-                                <Icon as={GiFiles} w={10} h={10} p={2} />Subscriptions
-                            </Link>
-                        </Box>
-                        <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
-                            <Link to="/sellers">
-                                <Icon as={RiShieldUserLine} w={10} h={10} p={2} />Sellers
-                            </Link>
-                        </Box>
-                    </VStack>
+
                     <Box bgGradient="linear(to-l,  teal.500, green.700)" my={20} mx={5} p={3} rounded={8} >
                         <Heading as="h6" size="md" p={3}>
                             Subscribe Now
@@ -96,34 +85,45 @@ function SellerPanel() {
 
     const customeBackground = useColorModeValue("gray.50", "#1F1F1F");
     const [isLargerThan1280] = useMediaQuery("(min-width: 1200px)")
+    const primarycolor = useColorModeValue("#38a169", "#9ae6b4");
 
+    const hoverStyle = {
+        fontWeight: "bold",
+        color: primarycolor
+    }
 
-    return <VStack mb={20} p={3} spacing={1} align="stretch" textAlign="left" borderWidth="0px" rounded={8}>
+    return <VStack mb={20} spacing={1} align="stretch" textAlign="left" borderWidth="0px" rounded={8}>
         {isLargerThan1280 ?
             <Box>
-                < ShortProfile />
                 <Heading as="h6" size="md" p={3}>
                     <Icon as={FaWarehouse} w={10} h={10} p={2} />Warehouse
                 </Heading>
 
-                <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
-                    <Link to="/subscriptions">
-                        <Icon as={GiFiles} w={10} h={10} p={2} />Offers
-                    </Link>
+                <Box p={3} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                    <NavLink to="/offers" activeStyle={hoverStyle}>
+                        <Icon as={GiFiles} w={10} h={10} p={2} />My Offers
+                    </NavLink>
                 </Box>
 
-                <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
-                    <Link to="/market">
+                <Box p={3} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                    <NavLink to="/items" activeStyle={hoverStyle}>
                         <Icon as={FaBoxes} w={10} h={10} p={2} />Items
-                    </Link>
+                    </NavLink>
                 </Box>
 
-                <Box p={2} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
-                    <Link to="/sellers">
+                <Box p={3} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                    <NavLink to="/orders" activeStyle={hoverStyle}>
                         <Icon as={FaFileInvoiceDollar} w={10} h={10} p={2} />Orders
-                    </Link>
+                    </NavLink>
                 </Box>
+                <Box p={3} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                    <NavLink to="/subscription" activeStyle={hoverStyle}>
+                        <Icon as={AiOutlineFileDone} w={10} h={10} p={2} />My Subscription
+                    </NavLink>
+                </Box>
+                <BuyerPanel />
             </Box>
+
             :
             <VStack m={3} p={3}>
                 <Box>
@@ -143,7 +143,53 @@ function SellerPanel() {
 
 
 function BuyerPanel() {
-    return < ShortProfile />
+
+
+    const customeBackground = useColorModeValue("gray.50", "#1F1F1F");
+    const [isLargerThan1280] = useMediaQuery("(min-width: 1200px)")
+    const primarycolor = useColorModeValue("#38a169", "#9ae6b4");
+
+    const hoverStyle = {
+        fontWeight: "bold",
+        color: primarycolor
+    }
+
+
+
+    return <VStack spacing={1} align="stretch" textAlign="left" borderWidth="0px" rounded={8}>
+        {isLargerThan1280 ?
+            <Box>
+                <Heading as="h6" size="md" p={3}>
+                    <Icon as={CgShortcut} w={10} h={10} p={2} />Shortcuts
+                </Heading>
+
+                <Box p={3} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                    <NavLink to="/purchases" activeStyle={hoverStyle}>
+                        <Icon as={BiPurchaseTagAlt} w={10} h={10} p={2} /> Purchases
+                    </NavLink>
+                </Box>
+
+                <Box p={3} textDecoration="none" _hover={{ backgroundColor: customeBackground }} rounded={3} >
+                    <NavLink to="/sellers/follow" activeStyle={hoverStyle}>
+                        <Icon as={RiUserFollowLine} w={10} h={10} p={2} /> Sellers
+                    </NavLink>
+                </Box>
+            </Box>
+            :
+            <VStack p={3}>
+                <Box>
+                    <IconButton mx={4} icon={SiMarketo} isRound="true"></IconButton>
+                </Box>
+                <Box>
+                    <IconButton mx={4} icon={MdLocalOffer} isRound="true"></IconButton>
+                </Box>
+                <Box>
+                    <IconButton mx={4} icon={GiFiles} isRound="true"></IconButton>
+                </Box>
+            </VStack>
+        }
+    </VStack>
+
 }
 
 export default function AsideNav() {
@@ -164,8 +210,9 @@ export default function AsideNav() {
                 borderRadius: '24px',
             },
         }} >
-            {user && user.type === 'Seller' && <SellerPanel />}
-            {user && user.type === 'Buyer' && <><BuyerPanel /><DefaultPanel /></>}
+
+            {user && user.type === 'Seller' && <> <ShortProfile /><SellerPanel /> </>}
+            {user && user.type === 'Buyer' && <> <ShortProfile /> <BuyerPanel /> <DefaultPanel /></>}
             {!user && < DefaultPanel />}
         </Box >
     );

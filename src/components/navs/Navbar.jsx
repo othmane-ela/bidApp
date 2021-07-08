@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { apiFetch } from './../../utils/api'
 import { UserContext } from '../../hooks/contexts'
 import { VStack } from '@chakra-ui/layout'
@@ -32,7 +32,12 @@ export default function Navbar() {
     const SerachBackground = useColorModeValue("white", "#0F0F0F");
     const [isLargerThan1280] = useMediaQuery("(min-width: 1280px)")
     const isDark = colorMode === "dark";
+    const primarycolor = useColorModeValue("#38a169", "#9ae6b4");
 
+    const hoverStyle = {
+        fontWeight: "bold",
+        color: primarycolor
+    }
     /**
     * DATA
     */
@@ -49,28 +54,23 @@ export default function Navbar() {
                     {isLargerThan1280 ?
                         <Wrap ml={8} direction={["column", "row"]} spacing="24px">
                             <WrapItem>
-                                <Link to="/market" >
+                                <NavLink to="/market" activeStyle={hoverStyle}  >
                                     Market
-                                </Link>
+                                </NavLink>
                             </WrapItem>
-                            {user !== null ?
+                            {user !== null && user !== false ?
                                 <>
                                     <WrapItem>
-                                        <Link to="/sellers">
+                                        <NavLink to="/sellers" activeStyle={hoverStyle} >
                                             Sellers
-                                        </Link>
-                                    </WrapItem>
-                                    <WrapItem>
-                                        <Link to="/sellers">
-                                            Offers
-                                        </Link>
+                                        </NavLink>
                                     </WrapItem>
                                 </>
                                 :
                                 <WrapItem>
-                                    <Link to="/subscriptions">
+                                    <NavLink to="/subscriptions" activeStyle={hoverStyle}  >
                                         Subscriptions
-                                    </Link>
+                                    </NavLink>
                                 </WrapItem>
                             }
 
@@ -164,7 +164,11 @@ function AccountSection() {
         </MenuButton>
         <Portal>
             <MenuList bg={customeBackground}>
-                <MenuItem>Profile</MenuItem>
+                <Link to="/profile">
+                    <MenuItem>
+                        Profile
+                    </MenuItem>
+                </Link>
                 <MenuItem>Payment</MenuItem>
                 <MenuItem>Settings</MenuItem>
                 <form>
