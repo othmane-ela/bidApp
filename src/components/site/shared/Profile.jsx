@@ -91,7 +91,7 @@ export default function Profile() {
                         textAlign={'center'}
                         color={useColorModeValue('gray.700', 'gray.400')}
                         px={3}>
-                        Actress, musician, songwriter and artist. PM for work inquires or{' '}
+                        Developer, musician, and artist. PM for work inquires or{' '}
                         <Link href={'#'} color={'blue.400'}>
                             #tag
                         </Link>{' '}
@@ -115,7 +115,7 @@ export default function Profile() {
                 </Box>
             </Center>
             <Center>
-                <Tabs width="100%">
+                <Tabs width="100%" colorScheme="green">
                     <TabList bg={customeBackground} px="37%">
                         <Tab>Bio</Tab>
                         <Tab>Offers</Tab>
